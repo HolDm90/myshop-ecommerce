@@ -2,7 +2,7 @@
 
 **MyShop** est une plateforme de commerce électronique moderne, rapide et responsive développée avec les dernières technologies de l'écosystème React. Le projet simule une expérience d'achat complète, de l'authentification à la gestion du panier.
 
-🚀 **Démo en ligne :** [LIEN_VERCEL_ICI]
+🚀 **Démo en ligne :** https://myshop-ecommerce-two.vercel.app/
 
 ---
 

@@ -155,47 +155,78 @@ export default function ProductList() {
             )}
           </div>
 
-          {/* Pagination Améliorée */}
-          {totalPages > 1 && (
-            <div className="flex flex-col items-center mt-12 gap-4">
-              <div className="flex items-center gap-4">
-                <Button
-                  variant="ghost"
-                  disabled={page === 1}
-                  onClick={() => handlePageChange(page - 1)}
-                  className="hover:bg-blue-50"
-                >
-                  ← Précédent
-                </Button>
-                
-                <div className="flex gap-1">
-                  {[...Array(totalPages)].map((_, i) => (
-                    <Button
-                      key={i + 1}
-                      variant={page === i + 1 ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => handlePageChange(i + 1)}
-                      className="w-10"
-                    >
-                      {i + 1}
-                    </Button>
-                  ))}
-                </div>
+          {/* Pagination Responsive & Réduite */}
+{totalPages > 1 && (
+  <div className="flex flex-col items-center mt-12 gap-4">
+    <div className="flex items-center gap-1 sm:gap-2">
+      {/* Bouton Précédent - Icône seule sur mobile pour gagner de la place */}
+      <Button
+        variant="ghost"
+        disabled={page === 1}
+        onClick={() => handlePageChange(page - 1)}
+        className="px-2 h-9 w-9 sm:w-auto sm:px-4"
+      >
+        <span className="hidden sm:inline">← Précédent</span>
+        <span className="sm:hidden text-lg">‹</span>
+      </Button>
 
-                <Button
-                  variant="ghost"
-                  disabled={page === totalPages}
-                  onClick={() => handlePageChange(page + 1)}
-                  className="hover:bg-blue-50"
-                >
-                  Suivant →
-                </Button>
-              </div>
-              <p className="text-sm text-gray-400">
-                Affichage de {(page-1)*limit + 1} à {Math.min(page*limit, total)} sur {total} produits
-              </p>
-            </div>
-          )}
+      <div className="flex items-center gap-1">
+        {[...Array(totalPages)].map((_, i) => {
+          const p = i + 1;
+          
+          // LOGIQUE DE RÉDUCTION : 
+          // On affiche la 1ère, la dernière, et les pages autour de l'actuelle (rayon de 1)
+          const isFirstOrLast = p === 1 || p === totalPages;
+          const isNearCurrent = p >= page - 1 && p <= page + 1;
+
+          if (isFirstOrLast || isNearCurrent) {
+            return (
+              <Button
+                key={p}
+                variant={page === p ? "default" : "outline"}
+                size="sm"
+                onClick={() => handlePageChange(p)}
+                className={`h-8 w-8 sm:h-10 sm:w-10 text-xs sm:text-sm ${
+                  page === p ? "pointer-events-none" : ""
+                }`}
+              >
+                {p}
+              </Button>
+            );
+          }
+
+          // Ajout des points de suspension (...)
+          if (p === page - 2 || p === page + 2) {
+            return (
+              <span key={p} className="px-1 text-gray-400 text-xs">
+                ...
+              </span>
+            );
+          }
+
+          return null;
+        })}
+      </div>
+
+      {/* Bouton Suivant - Icône seule sur mobile */}
+      <Button
+        variant="ghost"
+        disabled={page === totalPages}
+        onClick={() => handlePageChange(page + 1)}
+        className="px-2 h-9 w-9 sm:w-auto sm:px-4"
+      >
+        <span className="hidden sm:inline">Suivant →</span>
+        <span className="sm:hidden text-lg">›</span>
+      </Button>
+    </div>
+
+    {/* Texte informatif discret */}
+    <p className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest">
+      Page {page} sur {totalPages}
+    </p>
+  </div>
+)}
+
         </>
       )}
     </div>

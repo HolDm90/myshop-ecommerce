@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr" class="dark"> <!-- Changé en "fr" pour le public béninois -->
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Personnalisation de l'icône (Remplacez vite.svg par votre logo plus tard) -->
+    <link rel="icon" type="image/svg+xml" href="/shopping-bag.svg" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO de base (affiché pendant le chargement) -->
+    <title>MyShop | Votre boutique e-commerce au Bénin</title>
+    <meta name="description" content="Découvrez MyShop, la plateforme e-commerce leader au Bénin. Livraison rapide et paiements sécurisés." />
+    
+    <!-- Meta tags pour les réseaux sociaux (Open Graph) -->
+    <meta property="og:title" content="MyShop | Boutique en ligne" />
+    <meta property="og:description" content="Achetez les meilleurs produits aux meilleurs prix." />
+    <meta property="og:type" content="website" />
+
+    <style>
+      /* Petit correctif pour éviter le flash blanc au chargement en mode sombre */
+      html.dark {
+        background-color: #030712; /* Corresponds à bg-gray-950 de Tailwind */
+      }
+    </style>
+  </head>
+  
+  <body class="bg-white dark:bg-gray-950 transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

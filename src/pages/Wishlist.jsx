@@ -72,7 +72,7 @@ export default function Wishlist() {
          <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="outline" className="text-red-500 border-red-200 hover:bg-red-50 gap-2">
-                <Trash2 className="h-4 w-4" /> Vider le favoris
+                <Trash2 className="h-4 w-4" /> Vider la favoris
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -86,7 +86,7 @@ export default function Wishlist() {
               <AlertDialogFooter>
                 <AlertDialogCancel>Annuler</AlertDialogCancel>
                 <AlertDialogAction onClick={handleClearWishlist} className="bg-red-600 hover:bg-red-700">
-                  Oui, vider le favoris
+                  Oui, vider la favoris
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

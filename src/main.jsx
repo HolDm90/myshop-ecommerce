@@ -9,6 +9,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import { Analytics } from "@vercel/analytics/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
           <AuthProvider> 
             <PersistGate loading={null} persistor={persistor}>
             <App />
+            <Analytics />
             <Toaster richColors position="top-right" />
             </PersistGate>
           </AuthProvider>

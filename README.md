@@ -34,5 +34,5 @@
 
 1. **Cloner le projet**
    ```bash
-   git clone github.com
+   git clone https://github.com/HolDm90/myshop-ecommerce.git
    cd myshop
